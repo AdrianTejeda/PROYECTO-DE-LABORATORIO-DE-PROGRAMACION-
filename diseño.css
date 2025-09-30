@@ -1,0 +1,176 @@
+/* Colores principales */
+:root {
+    --negro: #000000;
+    --amarillo: #FFD700;
+    --blanco: #ffffff;
+    --gris-claro: #f4f4f4;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: var(--gris-claro);
+    color: var(--negro);
+}
+
+/* Menú de navegación fijo */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--negro);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+nav .logo-nav img {
+    height: 110px;
+}
+
+nav .menu a {
+    color: white;
+    text-decoration: navajowhite;
+    margin: 0 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav .menu a:hover {
+    color: yellow;
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    padding: 120px 20px 60px 20px;
+    background-color: var(--blanco);
+}
+
+header h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 20px;
+    color: #555;
+}
+
+/* Secciones */
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+/* Servicios */
+.servicios {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.servicio {
+    background-color: var(--blanco);
+    padding: 30px 20px;
+    width: 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.servicio:hover {
+    transform: translateY(-5px);
+}
+
+.servicio h3 {
+    margin-bottom: 15px;
+    color: var(--negro);
+}
+
+.servicio p {
+    color: #555;
+}
+
+
+
+.Cotizacion {
+font-family: Arial, sans-serif;
+text-wrap: center;
+    background-image:url(imagenes/6604968.png) ;
+    background-repeat:  no-repeat;
+    background-size: cover;
+    background-position:  center;
+    background-attachment: fixed;
+}
+
+/* Tienda */
+.tienda {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 50px;
+}
+
+.producto {
+    background-color: var(--blanco);
+    padding: 20px;
+    width: 220px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.producto h3 {
+    margin-bottom: 10px;
+    color: var(--negro);
+}
+
+.producto p {
+    margin-bottom: 10px;
+    font-weight: normal;
+    color: #333333ef;
+}
+
+/* Botón */
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--amarillo);
+    color: var(--negro);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.boton:hover {
+    background-color: #d7e600;
+}
+
+/* Pie de página */
+footer {
+    background-color: var(--negro);
+    color: var(--amarillo);
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
