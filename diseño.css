@@ -32,7 +32,7 @@ nav .logo-nav img {
 
 nav .menu a {
     color: white;
-    text-decoration: navajowhite;
+    text-decoration: none;
     margin: 0 20px;
     font-weight: bold;
     transition: 0.3s;
@@ -100,24 +100,22 @@ section h2 {
     color: #555;
 }
 
-
-
+/* Presupuesto */
 .Cotizacion {
-font-family: Arial, sans-serif;
-text-wrap: center;
-    background-image:url(imagenes/6604968.png) ;
-    background-repeat:  no-repeat;
+    background-image: url(imagenes/6604968.png);
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position:  center;
+    background-position: center;
     background-attachment: fixed;
+    padding: 20px;
 }
 
 /* Tienda */
 .tienda {
     display: flex;
     justify-content: center;
-    flex-wrap: nowrap;
-    gap: 50px;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .producto {
@@ -166,66 +164,123 @@ text-wrap: center;
     background-color: #d7e600;
 }
 
-/* Pie de página */
-/* ----- Layout: que el footer quede abajo ----- */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
-main, section, .contenido-principal { /* usa el contenedor que tengas */
-  flex: 1;
+/* Carrito */
+#carrito {
+    background-color: #fff;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    max-width: 600px;
+    text-align: left;
 }
 
-/* ----- Footer ----- */
+#carrito h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#carrito-lista p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+#enviar-wsp {
+    display: block;
+    margin: 20px auto 0;
+}
+
+/* Footer */
 footer {
-  background: #111;
-  color: #ffcc00;
-  text-align: center;
-  padding: 20px 10px;
+    background: #111;
+    color: #ffcc00;
+    text-align: center;
+    padding: 20px 10px;
 }
+
 footer .footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* ----- Botonera: usamos DIV, no NAV, para evitar reglas globales ----- */
 footer .footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 12px;
-  flex-wrap: wrap;
-
-  /* Blindaje por si había reglas raras */
-  position: static !important;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 12px;
+    flex-wrap: wrap;
 }
 
-/* ----- Botones rectangulares ----- */
 footer .footer-social .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 6px;      /* rectángulo con esquinas suaves */
-  text-decoration: none;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  transition: transform .15s ease, filter .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    transition: transform .15s ease, filter .2s ease;
 }
-footer .footer-social .btn svg { fill: currentColor; }
-footer .footer-social .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
 
-/* Colores de marca */
 footer .footer-social .btn.fb { background: #1877F2; }
 footer .footer-social .btn.wa { background: #25D366; }
-/* Instagram con gradiente */
 footer .footer-social .btn.ig {
-  background: radial-gradient(circle at 30% 107%,
-    #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+/* --- Alineación uniforme de las tarjetas de productos --- */
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.producto {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  width: 250px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 👈 Esto iguala alturas */
+  text-align: center;
+}
+
+.producto img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.producto h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  min-height: 48px; /* 👈 Mantiene título parejo */
+}
+
+.producto p {
+  font-size: 16px;
+  color: #444;
+  margin: 5px 0 10px;
+}
+
+.producto .boton {
+  margin-top: auto; /* 👈 Envía el botón al fondo de la tarjeta */
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.producto .boton:hover {
+  background-color: #3b8a3b;
 }

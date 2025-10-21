@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horizonte Construcción</title>
     <link rel="stylesheet" href="diseño.css">
-    <link href ="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -49,93 +49,87 @@
         </div>
     </section>
 
-<!-- Presupuesto-->
-<section id="Presupuesto">
+    <!-- Presupuesto -->
+    <section id="Presupuesto">
         <h2>Presupuesto</h2>
         <div class="Cotizacion">
-        <form>
-            <h2>Solicitar Cotización</h2>
-        <input type="text" placeholder="Nombre del Cliente" required>
-        <input type="text" placeholder=" Correo electronico" required>
-        <input type="text" placeholder="Tipo de trabajo" required>
-        <input type="text" placeholder="Descripcion del proyecto" required>
-        <input type="number" placeholder="Presupuesto estimado" required>
-       <p> <input type="submit" value="Enviar Consulta" required>
-       <input type="submit" value="Cancelar" required>
-        </form>
+            <form>
+                <h2>Solicitar Cotización</h2>
+                <input type="text" placeholder="Nombre del Cliente" required>
+                <input type="text" placeholder="Correo electrónico" required>
+                <input type="text" placeholder="Tipo de trabajo" required>
+                <input type="text" placeholder="Descripción del proyecto" required>
+                <input type="number" placeholder="Presupuesto estimado" required>
+                <p>
+                    <input type="submit" value="Enviar Consulta" required>
+                    <input type="reset" value="Cancelar">
+                </p>
+            </form>
+        </div>
     </section>
 
-
-    <!-- Sección de tienda online -->
+    <!-- Sección de tienda -->
     <section id="tienda">
         <h2>Productos Destacados</h2>
         <div class="tienda">
             <div class="producto">
                 <img src="imagenes/pinturascasablanca.jpg" alt="Pintura">
-                <h3>Pintura Interior</h3>
+                <h3>Pintura Interior Casablanca</h3>
+                <p>$12</p>
                 <a href="#" class="boton">Comprar</a>
             </div>
+
             <div class="producto">
                 <img src="imagenes/1674463-1.webp" alt="Pintura">
-                <h3>Pintura para exterior blanco mate 1Lts antihongos</h3>
+                <h3>Pintura Exterior Blanco Mate 1L</h3>
                 <p>$15</p>
                 <a href="#" class="boton">Comprar</a>
             </div>
+
             <div class="producto">
                 <img src="imagenes/ceramicos.jpg" alt="Cerámicos">
-                <h3>Cerámicos 36x36 color cedro</h3>
+                <h3>Cerámicos 36x36 Cedro</h3>
+                <p>$25</p>
                 <a href="#" class="boton">Comprar</a>
             </div>
 
             <div class="producto">
                 <img src="imagenes/cemento.jpg" alt="Cemento">
-                <h3>Maestro ECOPlanet Cemento de albañilería. 25 Kg</h3>
-            
+                <h3>Cemento ECOPlanet 25Kg</h3>
+                <p>$30</p>
                 <a href="#" class="boton">Comprar</a>
             </div>
-        </div>
-    </section>
 
-    <div class="producto">
+            <div class="producto">
                 <img src="imagenes/porcelanato.webp" alt="Porcelanato">
-                <h3>Porcelanato 60x60 Cm Blanco Marmolado Legacy Baldara </h3>
-                <p>$12</p>
+                <h3>Porcelanato 60x60 Blanco Marmolado</h3>
+                <p>$35</p>
                 <a href="#" class="boton">Comprar</a>
             </div>
         </div>
     </section>
 
-    <!-- Pie de página/ le agrego botones de redes al footer -->
-<footer id="contacto">
-  <div class="footer-inner">
-    <p>© 2025 Horizonte Construcción | Todos los derechos reservados</p>
+    <!-- Carrito -->
+    <section id="carrito">
+        <h2>🛒 Carrito de Compras</h2>
+        <div id="carrito-lista"></div>
+        <p id="carrito-total"></p>
+        <button id="enviar-wsp" class="boton">Enviar Pedido por WhatsApp</button>
+    </section>
 
-    <div class="footer-social">
-      <!-- Facebook -->
-      <a class="btn fb" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.3V12h2.3V9.7c0-2.3 1.4-3.5 3.4-3.5.98 0 2 .18 2 .18v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4V12h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12z"/>
-        </svg>
-        Facebook
-      </a>
+    <!-- Pie de página -->
+    <footer id="contacto">
+        <div class="footer-inner">
+            <p>© 2025 Horizonte Construcción | Todos los derechos reservados</p>
+            <div class="footer-social">
+                <a class="btn fb" href="https://www.facebook.com/" target="_blank">Facebook</a>
+                <a class="btn ig" href="https://www.instagram.com/" target="_blank">Instagram</a>
+                <a class="btn wa" href="https://wa.me/5493865539227" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
 
-      <!-- Instagram -->
-      <a class="btn ig" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>
-        </svg>
-        Instagram
-      </a>
-
-      <!-- WhatsApp -->
-      <a class="btn wa" href="https://www.whatsapp.com/" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-          <path d="M20.5 3.5A10.5 10.5 0 0 0 2.9 17.7L2 22l4.4-1a10.5 10.5 0 0 0 5 1.3h.1A10.5 10.5 0 0 0 20.5 3.5zm-8 18.1h-.1a8.6 8.6 0 0 1-4.4-1.2l-.3-.2-2.6.6.6-2.5-.2-.3A8.6 8.6 0 1 1 12.5 21.6zm4.9-6.4c-.3-.2-1.7-.9-2-.9s-.5 0-.7.3c-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1a7.1 7.1 0 0 1-3.3-2.9c-.3-.5.3-.5.9-1.7.1-.2 0-.3-.1-.5l-.4-1c-.1-.3-.3-.5-.5-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.3 2 3.1 4.9 4.3.7-.3 1.2-.5 1.6-.6.7-.2 1.3-.2 1.8-.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.3-.3-.4-.6-.6z"/>
-        </svg>
-        WhatsApp
-      </a>
-    </div>
-  </div>
-</footer>
+    <!-- Script del carrito -->
+    <script src="script.js"></script>
 </body>
 </html>
