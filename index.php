@@ -55,7 +55,7 @@
 <!-- Productos se carga desde la base de datos -->
 <section id="productos" class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-3">Productos Destacados</h2>
+    <h2 class="mb-3">Productos y Herramientas destacadas</h2>
     <div class="row g-4 mt-1">
       <?php
         // Consulta los últimos 8 productos activos y la categoría asociada.
