@@ -10,7 +10,7 @@
 
   <a class="navbar-brand d-flex align-items-center" href="index.php">
   <img src="imagenes/logo.png" alt="HORIZONTECONSTRUCCIONES" height="40" class="me-2">
-  <span class="fw-bold text-dark" >HORIZONTE CONSTRUCCIONES</span>
+  <span class="fw-bold text-dark" >HORIZONTE CONSTRUCCION</span>
 
 
 
