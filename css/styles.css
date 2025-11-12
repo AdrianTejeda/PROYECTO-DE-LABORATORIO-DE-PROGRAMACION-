@@ -1,0 +1,90 @@
+/* ===== Horizonte Construccion — estilos principales ===== */
+
+/*  Colores de marca */
+:root {
+  --color-principal: #e63946;   /* rojo para botones principales */
+  --color-secundario: #000000;  /* azul oscuro para navbar/fondos */
+  --text-on-dark: #ffffff;      /* color de texto cuando el fondo es oscuro */
+}
+
+/* Tipografía base para todo el sitio */
+body{
+  font-family: Inter, system-ui, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Etiqueta de descuento en las cards de productos */
+.badge-sale{
+  background: rgba(230,57,70,.12); /* rojo clarito con transparencia */
+  color: var(--color-principal);   /* usa el rojo principal */
+  font-weight: 700;
+}
+
+/* Footer con fondo oscuro y texto gris claro */
+.footer{
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+/* ===== Navbar (menú de arriba) ===== */
+.navbar{
+  background-color: var(--color-secundario) !important; /* azul oscuro */
+}
+.navbar .navbar-brand,
+.navbar .nav-link{
+  color: var(--text-on-dark) !important; /* texto blanco */
+}
+.navbar .nav-link:hover{
+  opacity: .85; /* efecto al pasar el mouse */
+}
+
+/* ===== Botones principales (los que usan .btn-danger) ===== */
+.btn-danger{
+  background-color: var(--color-principal) !important; /* rojo */
+  border-color: var(--color-principal) !important;
+  color: #fff !important; /* texto blanco */
+}
+.btn-danger:hover{
+  background-color: #c92a34 !important; /* rojo más oscuro al pasar el mouse */
+  border-color: #c92a34 !important;
+}
+
+/* ===== Botones de redes sociales ===== */
+
+/* ✅ WhatsApp (verde oficial) */
+.btn-wsp{
+  background-color: #25D366; /* verde oficial */
+  border-color: #25D366;
+  color: #fff;
+}
+.btn-wsp:hover{
+  background-color: #1ebe5d; /* verde más oscuro al hover */
+  border-color: #1ebe5d;
+  color: #fff;
+}
+
+/* ✅ Instagram (degradado oficial) */
+.btn-insta{
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border: none;
+  color: #fff;
+}
+.btn-insta:hover{
+  filter: brightness(1.1); /* más brillo al pasar el mouse */
+  color: #fff;
+}
+
+/* ✅ Facebook (azul oficial) */
+.btn-fb{
+  background-color: #1877F2; /* azul Facebook */
+  border-color: #1877F2;
+  color: #fff;
+}
+.btn-fb:hover{
+  background-color: #0f5bd9; /* azul más oscuro */
+  border-color: #0f5bd9;
+  color: #fff;
+}
+
+/* Imagenes con object-fit para que no se deformen */
+.object-fit-cover{ object-fit: cover; }
+
