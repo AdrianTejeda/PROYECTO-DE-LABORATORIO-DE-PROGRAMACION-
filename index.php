@@ -217,6 +217,42 @@
 })();
 </script>
 
+<!-- Seccion Nosotros-->
+
+<section id="nosotros" class="py-5">
+  <div class="container">
+    <h2 class="mb-4">¿Quienes Somos?</h2>
+
+    <div class="row">
+      <div class="col-12">
+        <p>
+          <strong>Horizonte Construcciones</strong> es una empresa especializada en la
+          ejecución de proyectos de construcción y remodelación, ofreciendo soluciones
+          eficientes, seguras y adaptadas a las necesidades de cada cliente.
+        </p>
+
+        <p>
+          Contamos con un equipo de profesionales capacitados y con amplia experiencia
+          en obras civiles, infraestructura, ampliaciones, mantenimiento edilicio y
+          dirección técnica. Nuestro compromiso es brindar resultados de calidad,
+          cumpliendo con los plazos y estándares que exige cada proyecto.
+        </p>
+
+        <p>
+          Además, disponemos de una línea completa de <strong>productos y materiales para la construcción</strong>,
+          garantizando durabilidad, buen rendimiento y precios competitivos.
+        </p>
+
+        <p>
+          En Horizonte Construcciones trabajamos con dedicación y transparencia,
+          acompañando a nuestros clientes desde la planificación hasta la finalización
+          de cada obra para asegurar un servicio integral y confiable.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- Seccion contacto-->
 
