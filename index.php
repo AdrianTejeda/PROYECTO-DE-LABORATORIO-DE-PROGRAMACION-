@@ -300,18 +300,18 @@ function() {
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener 'DOMContentLoaded', function () {
     const el = document.querySelector('#hero');
     if (el) {
-      new bootstrap.Carousel(el, {
+      new bootstrap.Carousel {
         interval: 5000,   // 5s por slide
         ride: 'carousel', // arranca solo
         pause: false,     // no se pausa al pasar el mouse
         touch: true,
         wrap: true
-      });
+      };
     }
-  });
+  };
 </script>
 </body>
 </html>
