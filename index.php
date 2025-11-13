@@ -191,10 +191,10 @@
 
 <script>
 // Bootstrap validation + WhatsApp redirect
-(function() {
+function() {
   const form = document.getElementById('formPresupuesto');
   if (!form) return;
-  form.addEventListener('submit', function(e) {
+  form.addEventListener'submit', function(e) {
     e.preventDefault();
     // Validación
     if (!form.checkValidity()) { form.classList.add('was-validated'); return; }
@@ -211,10 +211,10 @@
     const phone = (window.WSP_PHONE || "%WSP_PHONE%");
     const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(linea);
     window.open(url, "_blank");
-  });
+  };
   // Exponer número desde PHP
   window.WSP_PHONE = "<?php echo isset($WSP_PHONE) ? $WSP_PHONE : ''; ?>";
-})();
+};
 </script>
 
 <!-- Seccion Nosotros-->
