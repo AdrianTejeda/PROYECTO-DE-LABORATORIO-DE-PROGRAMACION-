@@ -22,7 +22,7 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.php#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#inicio">🏠</a></li>
         <li class="nav-item"><a class="nav-link" href="index.php#productos">Productos</a></li>
         <li class="nav-item"><a class="nav-link" href="index.php#servicios">Servicios</a></li>
         <li class="nav-item"><a class="nav-link" href="index.php#presupuesto">Presupuesto</a></li>
