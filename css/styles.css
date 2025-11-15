@@ -3,7 +3,7 @@
 /*  Colores de marca */
 :root {
   --color-principal: #e63946;   /* rojo para botones principales */
-  --color-secundario: rgb(231, 139, 0);  /* azul oscuro para navbar/fondos */
+  --color-secundario: #000000;  /* azul oscuro para navbar/fondos */
   --text-on-dark: #ffffff;      /* color de texto cuando el fondo es oscuro */
 }
 
