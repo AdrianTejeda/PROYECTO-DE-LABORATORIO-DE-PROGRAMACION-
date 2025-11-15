@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HORIZONTE CONSTRUCCION</title>
+  <title>HORIZONTECONSTRUCCIONES</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -55,7 +55,7 @@
 <!-- Productos se carga desde la base de datos -->
 <section id="productos" class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-3">Productos y Herramientas destacadas</h2>
+    <h2 class="mb-3">Menú destacado</h2>
     <div class="row g-4 mt-1">
       <?php
         // Consulta los últimos 8 productos activos y la categoría asociada.
@@ -88,7 +88,7 @@
 <section id="servicios" class="py-5 bg-light">
   <div class="container">
     <h2 class="mb-4">Servicios de construcción</h2>
-    <p class="text-secondary mb-5">Obras y soluciones integrales para hogares, comercios y obras civiles. Para mas informacion comunicate con nosotros a travez de nuestras redes sociales.</p>
+    <p class="text-secondary mb-5">Obras y soluciones integrales para hogares, comercios y obras civiles.</p>
     <div class="row g-4">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="card h-100 shadow-sm">
@@ -191,10 +191,10 @@
 
 <script>
 // Bootstrap validation + WhatsApp redirect
-function() {
+(function() {
   const form = document.getElementById('formPresupuesto');
   if (!form) return;
-  form.addEventListener'submit', function(e) {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     // Validación
     if (!form.checkValidity()) { form.classList.add('was-validated'); return; }
@@ -211,47 +211,11 @@ function() {
     const phone = (window.WSP_PHONE || "%WSP_PHONE%");
     const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(linea);
     window.open(url, "_blank");
-  };
+  });
   // Exponer número desde PHP
   window.WSP_PHONE = "<?php echo isset($WSP_PHONE) ? $WSP_PHONE : ''; ?>";
-};
+})();
 </script>
-
-<!-- Seccion Nosotros-->
-
-<section id="nosotros" class="py-5">
-  <div class="container">
-    <h2 class="mb-4">¿Quienes Somos?</h2>
-
-    <div class="row">
-      <div class="col-12">
-        <p>
-          <strong>Horizonte Construcciones</strong> es una empresa especializada en la
-          ejecución de proyectos de construcción y remodelación, ofreciendo soluciones
-          eficientes, seguras y adaptadas a las necesidades de cada cliente.
-        </p>
-
-        <p>
-          Contamos con un equipo de profesionales capacitados y con amplia experiencia
-          en obras civiles, infraestructura, ampliaciones, mantenimiento edilicio y
-          dirección técnica. Nuestro compromiso es brindar resultados de calidad,
-          cumpliendo con los plazos y estándares que exige cada proyecto.
-        </p>
-
-        <p>
-          Además, disponemos de una línea completa de <strong>productos y materiales para la construcción</strong>,
-          garantizando durabilidad, buen rendimiento y precios competitivos.
-        </p>
-
-        <p>
-          En Horizonte Construcciones trabajamos con dedicación y transparencia,
-          acompañando a nuestros clientes desde la planificación hasta la finalización
-          de cada obra para asegurar un servicio integral y confiable.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- Seccion contacto-->
@@ -294,24 +258,107 @@ function() {
 
 <footer class="py-4 bg-dark text-white-50 mt-5">
   <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center">
-    <div>© <?php echo date('Y'); ?> HORIZONTE CONSTRUCCION</div>
+    <div>© <?php echo date('Y'); ?> HORIZONTECONSTRUCCIONES</div>
     <div><a href="#presupuesto" class="link-light text-decoration-none">Pedí tu presupuesto</a></div>
   </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  document.addEventListener 'DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const el = document.querySelector('#hero');
     if (el) {
-      new bootstrap.Carousel {
+      new bootstrap.Carousel(el, {
         interval: 5000,   // 5s por slide
         ride: 'carousel', // arranca solo
         pause: false,     // no se pausa al pasar el mouse
         touch: true,
         wrap: true
-      };
+      });
     }
-  };
+  });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Inyectar estilos para animaciones sin modificar tus CSS originales
+  var style = document.createElement('style');
+  style.textContent = `
+    .js-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .js-fade-in.js-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .js-hover {
+      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    }
+    .js-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Animación de entrada para secciones y tarjetas
+  var fadeElements = document.querySelectorAll('section, .card, .card.h-100');
+  fadeElements.forEach(function (el) {
+    el.classList.add('js-fade-in');
+  });
+
+  // Hover suave en botones y links del navbar
+  var hoverElements = document.querySelectorAll('.btn, .navbar .nav-link, a.btn, button');
+  hoverElements.forEach(function (el) {
+    el.classList.add('js-hover');
+  });
+
+  // IntersectionObserver para activar la animación al entrar en viewport
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('js-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    fadeElements.forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback: mostrar todo directamente
+    fadeElements.forEach(function (el) {
+      el.classList.add('js-visible');
+    });
+  }
+
+  // Mensajes en botones del admin sin tocar la lógica PHP
+  var isAdmin = window.location.pathname.indexOf('/admin/') !== -1;
+  if (isAdmin) {
+    document.body.addEventListener('click', function (e) {
+      var btn = e.target.closest('button, a.btn');
+      if (!btn) return;
+      // Si el botón ya tiene un onclick, lo respetamos; solo mostramos mensaje aparte
+      var msg = btn.getAttribute('data-msg');
+      if (!msg || msg.trim() === '') {
+        var txt = (btn.textContent || '').trim();
+        if (txt) {
+          msg = 'Acción: ' + txt + ' realizada ✅';
+        } else {
+          msg = 'Acción realizada ✅';
+        }
+      }
+      // Evitamos estorbar confirm() propios del botón
+      if (!btn.hasAttribute('data-no-alert')) {
+        alert(msg);
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>
