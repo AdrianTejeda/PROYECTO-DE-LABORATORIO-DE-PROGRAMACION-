@@ -118,40 +118,101 @@ $rows = $conn->query("SELECT p.*, c.nombre AS categoria FROM productos p JOIN ca
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Productos</title>
+  <title>Productos - Admin</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f3f4f6;
+    }
+    .admin-shell {
+      max-width: 1200px;
+    }
+    .admin-header-card {
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: #fff;
+      border-radius: 1rem;
+    }
+    .admin-header-card h3 {
+      margin-bottom: .25rem;
+    }
+    .badge-estado {
+      font-size: .8rem;
+    }
+    .thumb-img {
+      height: 50px;
+      width: 50px;
+      object-fit: cover;
+      border-radius: .5rem;
+    }
+  </style>
 </head>
-<body class="bg-light">
-<div class="container py-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3>Productos</h3>
-    <div>
-      <a class="btn btn-secondary" href="index.php">Panel</a>
-      <a class="btn btn-danger" href="../logout.php">Salir</a>
+<body>
+<div class="container py-4 admin-shell">
+
+  <!-- Header / resumen -->
+  <div class="admin-header-card shadow-sm p-3 p-md-4 mb-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between js-fade-in">
+    <div class="mb-3 mb-md-0">
+      <h3 class="mb-1"><i class="bi bi-box-seam me-2"></i>Productos</h3>
+      <p class="mb-0 opacity-75">
+        Administrá los productos que se muestran en la tienda. Podés crear, editar, activar / desactivar y subir imágenes.
+      </p>
+    </div>
+    <div class="d-flex gap-2">
+      <a class="btn btn-outline-light btn-sm js-hover" href="index.php">
+        <i class="bi bi-speedometer2 me-1"></i> Panel
+      </a>
+      <a class="btn btn-outline-warning btn-sm js-hover" href="../logout.php">
+        <i class="bi bi-box-arrow-right me-1"></i> Salir
+      </a>
     </div>
   </div>
 
-  <div class="card mb-4">
+  <!-- Alertas -->
+  <?php if (!empty($_SESSION['flash_err'])): ?>
+    <div class="alert alert-danger shadow-sm js-fade-in">
+      <i class="bi bi-exclamation-triangle-fill me-2"></i><?= esc($_SESSION['flash_err']); ?>
+    </div>
+    <?php unset($_SESSION['flash_err']); ?>
+  <?php endif; ?>
+  <?php if (!empty($_SESSION['flash_ok'])): ?>
+    <div class="alert alert-success shadow-sm js-fade-in">
+      <i class="bi bi-check-circle-fill me-2"></i><?= esc($_SESSION['flash_ok']); ?>
+    </div>
+    <?php unset($_SESSION['flash_ok']); ?>
+  <?php endif; ?>
+
+  <!-- Formulario en tarjeta -->
+  <div class="card border-0 shadow-sm mb-4 js-fade-in">
+    <div class="card-header bg-white border-0 pb-0">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="card-title mb-0">
+            <?= isset($edit['id']) ? 'Editar producto' : 'Nuevo producto'; ?>
+          </h5>
+          <small class="text-muted">
+            Completá los campos y guardá para reflejar los cambios en la tienda.
+          </small>
+        </div>
+        <?php if (isset($edit['id'])): ?>
+          <span class="badge text-bg-info">ID #<?= (int)$edit['id']; ?></span>
+        <?php else: ?>
+          <span class="badge text-bg-primary">Creación</span>
+        <?php endif; ?>
+      </div>
+    </div>
     <div class="card-body">
-      <?php if (!empty($_SESSION['flash_err'])): ?>
-        <div class="alert alert-danger"><?= esc($_SESSION['flash_err']); ?></div>
-        <?php unset($_SESSION['flash_err']); ?>
-      <?php endif; ?>
-      <?php if (!empty($_SESSION['flash_ok'])): ?>
-        <div class="alert alert-success"><?= esc($_SESSION['flash_ok']); ?></div>
-        <?php unset($_SESSION['flash_ok']); ?>
-      <?php endif; ?>
 
       <form action="productos.php" method="post" enctype="multipart/form-data" class="row g-3">
         <?= function_exists('csrf_input') ? csrf_input() : '' ?>
         <input type="hidden" name="id" value="<?= isset($edit['id']) ? (int)$edit['id'] : 0 ?>">
 
-        <div class="col-md-4">
+        <div class="col-md-5">
           <label class="form-label">Nombre</label>
           <input required name="nombre" class="form-control" value="<?= esc($edit['nombre'] ?? '') ?>">
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
           <label class="form-label">Categoría</label>
           <select name="categoria_id" class="form-select" required>
             <option value="">-- Elegir --</option>
@@ -163,78 +224,135 @@ $rows = $conn->query("SELECT p.*, c.nombre AS categoria FROM productos p JOIN ca
           </select>
         </div>
 
-        <div class="col-md-2">
-          <label class="form-label">Precio</label>
-          <input type="number" step="0.01" name="precio" class="form-control" value="<?= esc($edit['precio'] ?? '') ?>">
-        </div>
-
-        <div class="col-md-2">
-          <label class="form-label">Descuento %</label>
-          <input type="number" min="0" max="90" name="descuento" class="form-control" value="<?= esc($edit['descuento'] ?? 0) ?>">
-        </div>
-
-        <div class="col-md-1 d-flex align-items-end">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="activo" id="activo" value="1"
-                   <?= (!isset($edit['activo']) || (int)$edit['activo'] === 1) ? 'checked' : '' ?>>
-            <label class="form-check-label" for="activo">Activo</label>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <label class="form-label">Descripción</label>
-          <textarea name="descripcion" class="form-control" rows="3"><?= esc($edit['descripcion'] ?? '') ?></textarea>
-        </div>
-
         <div class="col-md-3">
           <label class="form-label">Unidad</label>
           <input name="unidad" class="form-control" placeholder="unidad, kg, caja, etc."
                  value="<?= esc($edit['unidad'] ?? 'unidad') ?>">
         </div>
 
+        <div class="col-md-3">
+          <label class="form-label">Precio</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" step="0.01" name="precio" class="form-control" value="<?= esc($edit['precio'] ?? '') ?>">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Descuento %</label>
+          <input type="number" min="0" max="90" name="descuento" class="form-control" value="<?= esc($edit['descuento'] ?? 0) ?>">
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="activo" id="activo" value="1"
+                   <?= (!isset($edit['activo']) || (int)$edit['activo'] === 1) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="activo">
+              Activo en tienda
+            </label>
+          </div>
+        </div>
+
         <div class="col-md-6">
           <label class="form-label">Imagen (JPG/PNG/WEBP)</label>
           <input type="file" name="imagen" class="form-control" accept=".jpg,.jpeg,.png,.webp">
           <?php if (!empty($edit['imagen'])): ?>
-            <small class="text-muted">Actual: <?= esc($edit['imagen']) ?></small>
+            <div class="d-flex align-items-center gap-2 mt-2">
+              <small class="text-muted">Actual:</small>
+              <img src="../imagenes/<?= esc($edit['imagen']); ?>" class="thumb-img border">
+            </div>
           <?php endif; ?>
         </div>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Guardar</button>
-          <a href="index.php" class="btn btn-secondary">Volver al panel</a>
+          <label class="form-label">Descripción</label>
+          <textarea name="descripcion" class="form-control" rows="3"><?= esc($edit['descripcion'] ?? '') ?></textarea>
+        </div>
+
+        <div class="col-12 d-flex justify-content-between align-items-center mt-2">
+          <div class="text-muted small">
+            Los cambios se verán en la página pública inmediatamente después de guardar.
+          </div>
+          <div class="d-flex gap-2">
+            <a href="productos.php" class="btn btn-outline-secondary btn-sm js-hover">Limpiar formulario</a>
+            <button type="submit" class="btn btn-primary js-hover">
+              <i class="bi bi-save me-1"></i> Guardar
+            </button>
+          </div>
         </div>
       </form>
+
     </div>
   </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped align-middle">
-      <thead><tr><th>ID</th><th>Imagen</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Desc%</th><th>Activo</th><th>Unidad</th><th></th></tr></thead>
-      <tbody>
-      <?php while($r = $rows->fetch_assoc()): ?>
-        <tr>
-          <td><?= (int)$r['id']; ?></td>
-          <td><?php if(!empty($r['imagen'])): ?><img src="../imagenes/<?= esc($r['imagen']); ?>" style="height:50px"><?php endif; ?></td>
-          <td><?= esc($r['nombre']); ?></td>
-          <td><?= esc($r['categoria']); ?></td>
-          <td>$<?= number_format((float)$r['precio'], 2, ',', '.'); ?></td>
-          <td><?= (int)$r['descuento']; ?></td>
-          <td><?= ((int)$r['activo'] === 1) ? 'Sí' : 'No'; ?></td>
-          <td><?= esc($r['unidad'] ?? ''); ?></td>
-          <td class="text-end">
-            <a class="btn btn-sm btn-outline-primary" href="?id=<?= (int)$r['id']; ?>">Editar</a>
-            <a class="btn btn-sm btn-outline-danger" href="?del=<?= (int)$r['id']; ?>" onclick="return confirm('¿Eliminar?')">Eliminar</a>
-          </td>
-        </tr>
-      <?php endwhile; ?>
-      </tbody>
-    </table>
+  <!-- Listado -->
+  <div class="card border-0 shadow-sm js-fade-in">
+    <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+      <h5 class="mb-0">Listado de productos</h5>
+      <span class="text-muted small">Total: <?= $rows->num_rows ?? 0; ?> registros</span>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th class="text-end">Precio</th>
+              <th class="text-center">Desc%</th>
+              <th class="text-center">Estado</th>
+              <th>Unidad</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php while($r = $rows->fetch_assoc()): ?>
+            <tr>
+              <td><?= (int)$r['id']; ?></td>
+              <td>
+                <?php if(!empty($r['imagen'])): ?>
+                  <img src="../imagenes/<?= esc($r['imagen']); ?>" class="thumb-img border">
+                <?php else: ?>
+                  <span class="text-muted small">Sin imagen</span>
+                <?php endif; ?>
+              </td>
+              <td><?= esc($r['nombre']); ?></td>
+              <td><?= esc($r['categoria']); ?></td>
+              <td class="text-end">$<?= number_format((float)$r['precio'], 2, ',', '.'); ?></td>
+              <td class="text-center"><?= (int)$r['descuento']; ?>%</td>
+              <td class="text-center">
+                <?php if ((int)$r['activo'] === 1): ?>
+                  <span class="badge text-bg-success badge-estado">Activo</span>
+                <?php else: ?>
+                  <span class="badge text-bg-secondary badge-estado">Oculto</span>
+                <?php endif; ?>
+              </td>
+              <td><?= esc($r['unidad'] ?? ''); ?></td>
+              <td class="text-end">
+                <a class="btn btn-sm btn-outline-primary js-hover" href="?id=<?= (int)$r['id']; ?>" data-msg="Editando producto #<?= (int)$r['id']; ?>">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                <a class="btn btn-sm btn-outline-danger js-hover"
+                   href="?del=<?= (int)$r['id']; ?>"
+                   onclick="return confirm('¿Eliminar?')"
+                   data-msg="Producto eliminado">
+                  <i class="bi bi-trash3"></i>
+                </a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener 'DOMContentLoaded', function () {
   // Inyectar estilos para animaciones sin modificar tus CSS originales
   var style = document.createElement('style');
   style.textContent = `
@@ -255,48 +373,48 @@ document.addEventListener('DOMContentLoaded', function () {
       box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
     }
   `;
+}
   document.head.appendChild(style);
 
-  // Animación de entrada para secciones y tarjetas
-  var fadeElements = document.querySelectorAll('section, .card, .card.h-100');
-  fadeElements.forEach(function (el) {
+  // Animación de entrada para tarjetas (no hay <section> acá)
+  var fadeElements = document.querySelectorAll('.card, .admin-header-card, .alert');
+  fadeElements.forEach function (el) {
     el.classList.add('js-fade-in');
-  });
+  };
 
-  // Hover suave en botones y links del navbar
-  var hoverElements = document.querySelectorAll('.btn, .navbar .nav-link, a.btn, button');
-  hoverElements.forEach(function (el) {
+  // Hover suave en botones
+  var hoverElements = document.querySelectorAll('.btn, a.btn, button');
+  hoverElements.forEach function (el) {
     el.classList.add('js-hover');
-  });
+  };
 
   // IntersectionObserver para activar la animación al entrar en viewport
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (entry) {
+      entries.forEach function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('js-visible');
           obs.unobserve(entry.target);
         }
-      });
-    }, { threshold: 0.2 });
+      };
+    }, { threshold: 0.1 });
 
-    fadeElements.forEach(function (el) {
+    fadeElements.forEach (function) (el) {
       observer.observe(el);
-    });
-  } else {
+    };
+   else {
     // Fallback: mostrar todo directamente
-    fadeElements.forEach(function (el) {
+    fadeElements.forEach(function) (el) {
       el.classList.add('js-visible');
-    });
+    };
   }
 
   // Mensajes en botones del admin sin tocar la lógica PHP
   var isAdmin = window.location.pathname.indexOf('/admin/') !== -1;
   if (isAdmin) {
-    document.body.addEventListener('click', function (e) {
+    document.body.addEventListener'click', function (e) {
       var btn = e.target.closest('button, a.btn');
       if (!btn) return;
-      // Si el botón ya tiene un onclick, lo respetamos; solo mostramos mensaje aparte
       var msg = btn.getAttribute('data-msg');
       if (!msg || msg.trim() === '') {
         var txt = (btn.textContent || '').trim();
@@ -306,13 +424,12 @@ document.addEventListener('DOMContentLoaded', function () {
           msg = 'Acción realizada ✅';
         }
       }
-      // Evitamos estorbar confirm() propios del botón
-      if (!btn.hasAttribute('data-no-alert')) {
+      if !btn.hasAttribute('data-no-alert') {
         alert(msg);
       }
-    });
+    };
   }
-});
+};
 </script>
 
 </body>
