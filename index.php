@@ -14,42 +14,41 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/styles.css">
-
 </head>
 <body>
 <?php include __DIR__ . '/partials/navbar.php'; ?>
 
 <header id="inicio" class="position-relative">
   <!-- HERO CAROUSEL -->
-<div id="hero" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#hero" data-bs-slide-to="0" class="active" aria-current="true" aria-label="1"></button>
-    <button type="button" data-bs-target="#hero" data-bs-slide-to="1" aria-label="2"></button>
-    <button type="button" data-bs-target="#hero" data-bs-slide-to="2" aria-label="3"></button>
-  </div>
+  <div id="hero" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#hero" data-bs-slide-to="0" class="active" aria-current="true" aria-label="1"></button>
+      <button type="button" data-bs-target="#hero" data-bs-slide-to="1" aria-label="2"></button>
+      <button type="button" data-bs-target="#hero" data-bs-slide-to="2" aria-label="3"></button>
+    </div>
 
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="5000">
-      <img class="d-block w-100" src="imagenes/carrusel1.jpg" alt="Slide 1">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img class="d-block w-100" src="imagenes/carrusel1.jpg" alt="Slide 1">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img class="d-block w-100" src="imagenes/carrusel2.jpg" alt="Slide 2">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img class="d-block w-100" src="imagenes/carrusel3.jpg" alt="Slide 3">
+      </div>
     </div>
-    <div class="carousel-item" data-bs-interval="5000">
-      <img class="d-block w-100" src="imagenes/carrusel2.jpg" alt="Slide 2">
-    </div>
-    <div class="carousel-item" data-bs-interval="5000">
-      <img class="d-block w-100" src="imagenes/carrusel3.jpg" alt="Slide 3">
-    </div>
-  </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Anterior</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Siguiente</span>
-  </button>
-</div>
-<!-- /HERO CAROUSEL -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#hero" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hero" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+  <!-- /HERO CAROUSEL -->
 </header>
 
 <!-- Productos se carga desde la base de datos -->
@@ -143,51 +142,71 @@
 </section>
 
 <!-- =================== PRESUPUESTO (FORM WHATSAPP) =================== -->
-<section id="presupuesto" class="py-5">
+<section id="presupuesto" class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-4">Pedí tu presupuesto</h2>
-    <p class="text-secondary">Completá el formulario y te contactamos por WhatsApp.</p>
-    <form id="formPresupuesto" class="row g-3 needs-validation" novalidate>
-      <div class="col-md-6">
-        <label class="form-label">Nombre y apellido</label>
-        <input type="text" name="nombre" class="form-control" required>
-        <div class="invalid-feedback">Ingresá tu nombre.</div>
+    <div class="row justify-content-center">
+      <div class="col-xl-8 col-lg-9">
+        <div class="card shadow-lg border-0">
+          <div class="card-body p-4 p-md-5">
+
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div>
+                <h2 class="mb-1">Pedí tu presupuesto</h2>
+                <p class="text-secondary mb-0">
+                  Completá el formulario y te contactamos por WhatsApp para coordinar tu obra.
+                </p>
+   
+            <form id="formPresupuesto" class="row g-3 needs-validation" novalidate>
+              <div class="col-md-6">
+                <label class="form-label">Nombre y apellido</label>
+                <input type="text" name="nombre" class="form-control" required>
+                <div class="invalid-feedback">Ingresá tu nombre.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Teléfono (WhatsApp)</label>
+                <input type="tel" name="telefono" class="form-control" required>
+                <div class="invalid-feedback">Ingresá tu teléfono.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control">
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Tipo de trabajo</label>
+                <select name="tipo" class="form-select" required>
+                  <option value="" selected disabled>Elegí una opción</option>
+                  <option>Obra nueva</option>
+                  <option>Remodelación</option>
+                  <option>Instalaciones (luz/agua/gas)</option>
+                  <option>Pintura</option>
+                  <option>Otro</option>
+                </select>
+                <div class="invalid-feedback">Seleccioná un tipo de trabajo.</div>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Descripción del trabajo</label>
+                <textarea name="detalle" class="form-control" rows="4"
+                          placeholder="Medidas, materiales, plazos, dirección, etc." required></textarea>
+                <div class="invalid-feedback">Contanos un poco más del trabajo.</div>
+              </div>
+
+              <div class="col-12 d-flex justify-content-end">
+                <button class="btn btn-success btn-lg px-4" type="submit">
+                  <i class="bi bi-whatsapp me-2"></i> Enviar por WhatsApp
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <label class="form-label">Teléfono (WhatsApp)</label>
-        <input type="tel" name="telefono" class="form-control" required>
-        <div class="invalid-feedback">Ingresá tu teléfono.</div>
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control">
-      </div>
-      <div class="col-md-6">
-        <label class="form-label">Tipo de trabajo</label>
-        <select name="tipo" class="form-select" required>
-          <option value="" selected disabled>Elegí una opción</option>
-          <option>Obra nueva</option>
-          <option>Remodelación</option>
-          <option>Instalaciones (luz/agua/gas)</option>
-          <option>Pintura</option>
-          <option>Otro</option>
-        </select>
-        <div class="invalid-feedback">Seleccioná un tipo de trabajo.</div>
-      </div>
-      <div class="col-12">
-        <label class="form-label">Descripción del trabajo</label>
-        <textarea name="detalle" class="form-control" rows="4" placeholder="Medidas, materiales, plazos, dirección, etc." required></textarea>
-        <div class="invalid-feedback">Contanos un poco más del trabajo.</div>
-      </div>
-      <div class="col-12">
-        <button class="btn btn-success btn-lg" type="submit">
-          <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
-        </button>
-      </div>
-    </form>
+    </div>
   </div>
 </section>
-
 
 <script>
 // Bootstrap validation + WhatsApp redirect
@@ -217,15 +236,17 @@
 })();
 </script>
 
+<!-- 👇 Se eliminó la sección #contacto, ahora el contacto está en el footer -->
 
-<!-- Seccion contacto-->
+<footer id="footer" class="py-4 bg-dark text-white-50 mt-5">
+  <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center">
+    <div>© <?php echo date('Y'); ?> HORIZONTECONSTRUCCIONES</div>
+    <div><a href="#presupuesto" class="link-light text-decoration-none">Pedí tu presupuesto</a></div>
+  </div>
 
-<section id="contacto" class="py-5">
-  <div class="container">
-    <h2 class="mb-3">Contacto</h2>
+  <!-- Redes sociales en el footer -->
+  <div class="container mt-4">
     <div class="row g-3">
-      
-      <!-- ✅ Botón de WhatsApp -->
       <div class="col-md-4">
         <a class="btn btn-wsp w-100 d-flex justify-content-between align-items-center"
            href="https://wa.me/5493865539227" target="_blank" rel="noopener">
@@ -234,7 +255,6 @@
         </a>
       </div>
 
-      <!-- ✅ Botón de Instagram-->
       <div class="col-md-4">
         <a class="btn btn-insta w-100 d-flex justify-content-between align-items-center"
            href="https://www.instagram.com" target="_blank" rel="noopener">
@@ -243,7 +263,6 @@
         </a>
       </div>
 
-      <!-- ✅ Botón de Facebook-->
       <div class="col-md-4">
         <a class="btn btn-fb w-100 d-flex justify-content-between align-items-center"
            href="https://www.facebook.com" target="_blank" rel="noopener">
@@ -251,18 +270,12 @@
           <i class="bi bi-arrow-right"></i>
         </a>
       </div>
-
     </div>
   </div>
-</section>
-
-<footer class="py-4 bg-dark text-white-50 mt-5">
-  <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center">
-    <div>© <?php echo date('Y'); ?> HORIZONTECONSTRUCCIONES</div>
-    <div><a href="#presupuesto" class="link-light text-decoration-none">Pedí tu presupuesto</a></div>
-  </div>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const el = document.querySelector('#hero');
@@ -341,7 +354,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.addEventListener('click', function (e) {
       var btn = e.target.closest('button, a.btn');
       if (!btn) return;
-      // Si el botón ya tiene un onclick, lo respetamos; solo mostramos mensaje aparte
       var msg = btn.getAttribute('data-msg');
       if (!msg || msg.trim() === '') {
         var txt = (btn.textContent || '').trim();
@@ -351,12 +363,54 @@ document.addEventListener('DOMContentLoaded', function () {
           msg = 'Acción realizada ✅';
         }
       }
-      // Evitamos estorbar confirm() propios del botón
       if (!btn.hasAttribute('data-no-alert')) {
         alert(msg);
       }
     });
   }
+});
+</script>
+
+<!-- 🔥 Script específico para SERVICIOS (colores + emojis + hover extra) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Estilos específicos solo para las cards de SERVICIOS
+  var st = document.createElement("style");
+  st.textContent = `
+    #servicios .card {
+      transition: .25s;
+      border-radius: 1rem;
+    }
+    #servicios .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 1rem 2rem rgba(0,0,0,.18);
+    }
+  `;
+  document.head.appendChild(st);
+
+  // Colores + Emojis automáticos para cada servicio (en orden)
+  const data = [
+    {emoji:"🏗️", color:"#fb8c00"}, // Obra gruesa
+    {emoji:"🛠️", color:"#43a047"}, // Remodelaciones
+    {emoji:"💡", color:"#1e88e5"}, // Instalaciones
+    {emoji:"🎨", color:"#8e24aa"}, // Pintura
+    {emoji:"🧱", color:"#ffa000"}, // Obra liviana
+    {emoji:"📐", color:"#00897b"}  // Asesoría
+  ];
+
+  document.querySelectorAll("#servicios .card .card-title").forEach((titulo, i) => {
+    if (!data[i]) return;
+
+    // Agrego emoji solo si no lo tiene ya
+    if (!titulo.textContent.includes(data[i].emoji)) {
+      titulo.textContent = data[i].emoji + " " + titulo.textContent.trim();
+    }
+
+    // Colorear la card
+    let card = titulo.closest(".card");
+    card.style.borderTop = "5px solid " + data[i].color;
+    card.style.background = data[i].color + "1A"; // 1A = 10% transparencia
+  });
 });
 </script>
 
