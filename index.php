@@ -208,6 +208,55 @@
   </div>
 </section>
 
+<!-- =================== seccion Ubicacion =================== -->
+
+<section id="ubicacion" class="py-5">
+  <div class="container">
+    
+    <!-- Título centrado -->
+    <h2 class="mb-4 text-center">Ubicación</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      
+      <!-- Tarjeta 1: Mapa GPS -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header text-center fw-semibold">
+            Mapa GPS
+          </div>
+          <div class="ratio ratio-4x3">
+            <iframe
+              src="https://www.google.com/maps?q=-27.64870262145996,-65.57394409179688&hl=es&z=17&output=embed"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Imagen del local -->
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header text-center fw-semibold">
+            Nuestro local
+          </div>
+          <div class="ratio ratio-4x3">
+            <img
+              src="imagenes/local.jpeg"  
+              alt="Frente del local Horizonte Construcciones"
+              class="w-100 h-100"
+              style="object-fit: cover;">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <script>
 // Bootstrap validation + WhatsApp redirect
 (function() {
