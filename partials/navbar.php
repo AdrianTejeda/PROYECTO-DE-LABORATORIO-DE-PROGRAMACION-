@@ -25,6 +25,7 @@
         <li class="nav-item"><a class="nav-link" href="index.php#productos">Productos</a></li>
         <li class="nav-item"><a class="nav-link" href="index.php#servicios">Servicios</a></li>
         <li class="nav-item"><a class="nav-link" href="index.php#presupuesto">Presupuesto</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#ubicacion">Ubicacion</a></li>
         <li class="nav-item"><a class="nav-link" href="index.php#footer">Contacto</a></li>
         <li class="nav-item"><a class="nav-link" href="carrito.php"><i class="bi bi-cart"></i> Carrito <?php $cnt = 0; if (!empty($_SESSION['cart'])) { $cnt = array_sum($_SESSION['cart']); } echo "<span class=\"badge text-bg-danger ms-1\">".$cnt."</span>"; ?></a></li>
         <li class="nav-item"><a class="nav-link" href="login.php"><i class="bi bi-person"></i> Login</a></li>
