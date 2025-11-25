@@ -54,7 +54,7 @@
 <!-- Productos se carga desde la base de datos -->
 <section id="productos" class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-3">Menú destacado</h2>
+    <h2 class="mb-3">Productos y Herramientas</h2>
     <div class="row g-4 mt-1">
       <?php
         // Consulta los últimos 8 productos activos y la categoría asociada.
@@ -285,7 +285,7 @@
 })();
 </script>
 
-<!-- 👇 Se eliminó la sección #contacto, ahora el contacto está en el footer -->
+
 
 <footer id="footer" class="py-4 bg-dark text-white-50 mt-5">
   <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center">
